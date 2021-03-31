@@ -1,4 +1,5 @@
 class ActivityElements():
+
     def __init__(self, start_node):
         self.start_node = start_node
         self.activity_name = []
@@ -7,23 +8,23 @@ class ActivityElements():
         self.final_node = []
         self.elements_order = []
 
-    def create_activity(self):
-        activity = input("Nome da atividade: ")
+    def create_activity(self, name):
+        activity = name
         self.activity_name.append(activity)
         self.elements_order.append(0)
-    
-    def create_decision(self):
-        decision = input("Nome do no de decisao: ")
+
+    def create_decision(self, name):
+        decision = name
         self.decision_node.append(decision)
         self.elements_order.append(1)
 
-    def create_merge(self):
-        merge = input("Nome do no de merge: ")
+    def create_merge(self, name):
+        merge = name
         self.merge_node.append(merge)
         self.elements_order.append(2)
 
-    def create_final(self):
-        final = input("Nome do no final: ")
+    def create_final(self, name):
+        final = name
         self.final_node.append(final)
         self.elements_order.append(3)
 
