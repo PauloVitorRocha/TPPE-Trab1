@@ -1,6 +1,8 @@
 from elements import ActivityElements
 from transitions import ActivityTransitions
+
 import os
+
 
 class ActivityDiagram():
 
@@ -10,21 +12,34 @@ class ActivityDiagram():
         self.transitions = []
 
     def create_elements(self):
-        start_node = input("Nome do no inicial: ")
+        start_node = input("Nome do Nó Inicial: ")
 
         self.elements = ActivityElements(start_node)
+
         while(1):
             os.system("clear")
-            option = int(input("Deseja escolher inserir\n1 - Atividade\n2 - No de Decisao\n3 - No de Merge\n4 - No final\n5 - Sair\n-> "))
+
+            option = int(input(
+                "-- Inserir Elemento no Diagrama de Atividades --\n"+
+                "1 - Atividade\n"+
+                "2 - Nó de Decisão\n"+
+                "3 - Nó de Fusão\n"+
+                "4 - Nó Final\n"+
+                "5 - Sair\n"
+                +"-> "
+            ))
+
             if option == 1:
                 self.elements.create_activity()
+
+                # COMEÇAR AQUI O DIAGRAMA DE SEQUÊNCIA ??
 
             elif option == 2:
                 self.elements.create_decision()
 
             elif option == 3:
                 self.elements.create_merge()
-            
+
             elif option == 4:
                 self.elements.create_final()
             
