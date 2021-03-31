@@ -64,7 +64,9 @@ if __name__ == "__main__":
                 # TODO: TRATAR SOBRESCRIÇÃO DE ELEMENTOS
 
             elif option == 2:
-                act.create_transitions()
+                name = input("Nome da transicao: ")
+                prob = float(input("Probabilidade da transicao: "))
+                act.create_transitions(name, prob)
 
             else:
                 act.create_xml()
