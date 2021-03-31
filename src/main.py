@@ -40,18 +40,18 @@ if __name__ == "__main__":
                         "5 - Sair\n"
                         +"-> "
                     ))
-                    if option == 1:
+                    if option1 == 1:
                         activity_name = input("Nome da Atividade: ")
                         act.elements.create_activity(activity_name)
                         
             # COMEÇAR AQUI O DIAGRAMA DE SEQUÊNCIA ??
-                    elif option == 2:
+                    elif option1 == 2:
                         decision_node = input("Nome do Nó de Decisão: ")
                         act.elements.create_decision(decision_node)
-                    elif option == 3:
+                    elif option1 == 3:
                         merge = input("Nome do Nó de Fusão: ")
                         act.elements.create_merge(merge)
-                    elif option == 4:
+                    elif option1 == 4:
                         final = input("Nome do Nó Final: ")
                         act.elements.create_final(final)
                     elif option1 == 5:

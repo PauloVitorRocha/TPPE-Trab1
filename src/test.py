@@ -2,7 +2,6 @@ import pytest
 from activity_diagram import ActivityDiagram
 from elements import ActivityElements
 from transitions import ActivityTransitions
-import mock
 
 
 def test_activity_diagram():
