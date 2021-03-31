@@ -7,44 +7,34 @@ import os
 class ActivityDiagram():
 
     def __init__(self, name):
-        self.name  = name
+        self.name = name
         self.elements = None
         self.transitions = []
 
-    def create_elements(self):
-        start_node = input("Nome do Nó Inicial: ")
+    def create_initial_node(self, name):
+        start_node = name
 
         self.elements = ActivityElements(start_node)
 
-        while(1):
-            os.system("clear")
 
-            option = int(input(
-                "-- Inserir Elemento no Diagrama de Atividades --\n"+
-                "1 - Atividade\n"+
-                "2 - Nó de Decisão\n"+
-                "3 - Nó de Fusão\n"+
-                "4 - Nó Final\n"+
-                "5 - Sair\n"
-                +"-> "
-            ))
+    def create_elements(self, option):
 
-            if option == 1:
-                self.elements.create_activity()
+        if option == 1:
+            self.elements.create_activity()
+            # COMEÇAR AQUI O DIAGRAMA DE SEQUÊNCIA ??
 
-                # COMEÇAR AQUI O DIAGRAMA DE SEQUÊNCIA ??
+        elif option == 2:
+            self.elements.create_decision()
 
-            elif option == 2:
-                self.elements.create_decision()
+        elif option == 3:
+            self.elements.create_merge()
 
-            elif option == 3:
-                self.elements.create_merge()
+        elif option == 4:
+            self.elements.create_final()
+        
+        else:
+            return
 
-            elif option == 4:
-                self.elements.create_final()
-            
-            else:
-                break
 
     def create_transitions(self):
         while(1):

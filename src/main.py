@@ -25,7 +25,41 @@ if __name__ == "__main__":
             )
 
             if option == 1:
-                act.create_elements()
+                start_node = input("Nome do Nó Inicial: ")
+                act.create_initial_node(start_node)
+
+                while(1):
+                    os.system("clear")
+                    
+                    option1 = int(input(
+                        "-- Inserir Elemento no Diagrama de Atividades --\n"+
+                        "1 - Atividade\n"+
+                        "2 - Nó de Decisão\n"+
+                        "3 - Nó de Fusão\n"+
+                        "4 - Nó Final\n"+
+                        "5 - Sair\n"
+                        +"-> "
+                    ))
+                    if option == 1:
+                        activity_name = input("Nome da Atividade: ")
+                        act.elements.create_activity(activity_name)
+                        
+            # COMEÇAR AQUI O DIAGRAMA DE SEQUÊNCIA ??
+                    elif option == 2:
+                        decision_node = input("Nome do Nó de Decisão: ")
+                        act.elements.create_decision(decision_node)
+                    elif option == 3:
+                        merge = input("Nome do Nó de Fusão: ")
+                        act.elements.create_merge(merge)
+                    elif option == 4:
+                        final = input("Nome do Nó Final: ")
+                        act.elements.create_final(final)
+                    elif option1 == 5:
+                        break
+                     else:
+                        return
+
+
 
                 # TODO: TRATAR SOBRESCRIÇÃO DE ELEMENTOS
 
