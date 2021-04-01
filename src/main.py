@@ -56,8 +56,8 @@ if __name__ == "__main__":
                         act.elements.create_final(final)
                     elif option1 == 5:
                         break
-                     else:
-                        return
+                    else:
+                        pass
 
 
 

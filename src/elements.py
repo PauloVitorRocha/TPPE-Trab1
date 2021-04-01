@@ -1,12 +1,17 @@
+from decision_node import DecisionStream
+import os
+import time
+
 class ActivityElements():
 
     def __init__(self, start_node):
         self.start_node = start_node
         self.activity_name = []
-        self.decision_node = []
+        self.decision_node = [[]]
         self.merge_node = []
         self.final_node = []
         self.elements_order = []
+        self.decision_node_number = 0
 
     def create_activity(self, name):
         activity = name
@@ -14,9 +19,43 @@ class ActivityElements():
         self.elements_order.append(0)
 
     def create_decision(self, name):
-        decision = name
-        self.decision_node.append(decision)
+        streams = int(input("Quantidade de fluxos: "))
+        self.decision_node = [[] for i in range(streams)]
+        for i in range(streams):
+            decision = DecisionStream()
+            while True:
+                os.system("clear")
+
+                option = int(
+                    input(
+                        "-- Criação do Fluxo de Decisao {} --\n".format(i+1)+
+                        "1 - Inserir No de Atividade\n"+
+                        "2 - Inserir Transição\n"+
+                        "3 - Inserir No de Merge / Sair\n"+
+                        "4 - Inserir no Final / Sair\n"+
+                        "-> "
+                    )
+                )
+
+                if option == 1:
+                    decision.read_activity()
+
+                elif option == 2:
+                    decision.read_transition()
+
+                elif option == 3:
+                    decision.read_merge()
+                    break
+                
+                elif option == 4:
+                    decision.read_final()
+                    break
+            
+            
+            self.decision_node[self.decision_node_number].append(decision)
         self.elements_order.append(1)
+        self.decision_node_number += 1
+            
 
     def create_merge(self, name):
         merge = name
@@ -40,7 +79,13 @@ class ActivityElements():
                 f.write("\t\t<Activity name=\"{}\"/>\n".format(self.activity_name[a_count]))
                 a_count += 1
             elif i == 1:
-                f.write("\t\t<DecisionNode name=\"{}\"/>\n".format(self.decision_node[d_count]))
+                f.write("\t\t<DecisionNode>\n")
+                j = 0
+                for decision_stream in self.decision_node[d_count]:
+                    decision_stream.decision_stream_to_xml(f, j)
+                    j += 1
+                
+                f.write("\t\t</DecisionNode>\n")
                 d_count += 1
             elif i == 2:
                 f.write("\t\t<MergeNode name=\"{}\"/>\n".format(self.merge_node[m_count]))

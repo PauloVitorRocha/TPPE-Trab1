@@ -1,0 +1,15 @@
+<ActivityDiagram name="d">
+	<ActivityDiagramElements>
+		<StartNode name="s"/>
+		<DecisionNode>
+			<DecisionStream count="1">
+				<MergeNode name="m"/>
+			</DecisionStream count="1">
+			<DecisionStream count="2">
+				<MergeNode name="m"/>
+			</DecisionStream count="2">
+		</DecisionNode>
+	</ActivityDiagramElements>
+	<ActivityDiagramTransitions>
+	</ActivityDiagramTransitions>
+</ActivityDiagram>

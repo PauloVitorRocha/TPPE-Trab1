@@ -26,7 +26,7 @@ class ActivityDiagram():
         self.elements.create_elements_xml(f)
         f.write("\t<ActivityDiagramTransitions>\n")
         for transition in self.transitions:
-            transition.print_transitions(f)
+            transition.transition_to_xml(f, False)
         f.write("\t</ActivityDiagramTransitions>\n")
         f.write("</ActivityDiagram>")
         f.close()
