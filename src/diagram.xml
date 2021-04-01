@@ -4,10 +4,17 @@
 		<DecisionNode>
 			<DecisionStream count="1">
 				<MergeNode name="m"/>
-			</DecisionStream count="1">
+				<DecisionStreamTransitions count="1">
+					<Transition name="t1" prob="1"/>
+					<Transition name="t2" prob="1"/>
+				</DecisionStreamTransitions>
+			</DecisionStream>
 			<DecisionStream count="2">
-				<MergeNode name="m"/>
-			</DecisionStream count="2">
+				<FinalNode name="f"/>
+				<DecisionStreamTransitions count="2">
+					<Transition name="t3" prob="1"/>
+				</DecisionStreamTransitions>
+			</DecisionStream>
 		</DecisionNode>
 	</ActivityDiagramElements>
 	<ActivityDiagramTransitions>

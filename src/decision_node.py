@@ -46,9 +46,11 @@ class DecisionStream():
                 f.write("\t\t\t\t<MergeNode name=\"{}\"/>\n".format(self.merge_node[m_count]))
                 m_count += 1
         
+        f.write("\t\t\t\t<DecisionStreamTransitions>\n".format(k+1))
         for transition in self.transitions:
             transition.transition_to_xml(f, True)
-            
+        
+        f.write("\t\t\t\t</DecisionStreamTransitions>\n")
         f.write("\t\t\t</DecisionStream>\n")
 
     
