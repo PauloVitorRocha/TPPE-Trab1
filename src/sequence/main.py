@@ -1,19 +1,85 @@
 from sequence_diagrams import SequenceDiagrams
+from sequence_diagram_block import SequenceDiagramBlock
+
 import os
+
+from excepts import EmptyGuardConditionException, MessageFormatException
+
 
 if __name__ == "__main__":
     seq = SequenceDiagrams()
+
     while(1):
         os.system("clear")
-        option = int(input("Deseja escolher inserir\n1 - Lifeline\n2 - Fragmentos\n3 - Diagrama de Sequencia\n4 - Sair\n-> "))
+
+        option = int(input(
+            "Deseja escolher inserir\n" +
+            "1 - Lifeline\n" +
+            "2 - Fragmentos\n" +
+            "3 - Diagrama de Sequência\n" +
+            "4 - Sair\n" +
+            "-> "
+        ))
+
         if option == 1:
-            seq.create_and_persist_lifelines()
+            lifeline_name = input("Nome da Lifeline: ")
+            seq.create_and_persist_lifelines(lifeline_name)
 
         elif option == 2:
-            seq.create_and_persist_fragments()
+            fragment_name = input("Nome do Fragmento: ")
+
+            # from excepts import EmptyOptionalFragment
+            # if seq.sequence_fragment_exists(fragment_name) is False:
+            #     raise EmptyOptionalFragment
+
+            fragment_represented = input("Fragmento representado por: ")
+
+            seq.create_and_persist_fragments(
+                fragment_name, fragment_represented
+            )
 
         elif option == 3:
-            seq.create_single_sequence_diagram()
+            name = input("Nome do diagrama: ")
+            guard_condition = input("Condição de Guarda: ")
+
+            if bool(guard_condition) is False:
+                raise EmptyGuardConditionException
+
+            sequence_diagram = SequenceDiagramBlock(name, guard_condition)
+
+            while True:
+                os.system("clear")
+
+                option1 = int(input(
+                    "Deseja escolher inserir\n" +
+                    "1 - Mensagem\n" +
+                    "2 - Fragmento\n" +
+                    "3 - Sair\n" +
+                    "-> "
+                ))
+
+                if option1 == 1:
+                    m_name = input("Nome da mensagem: ")
+                    m_prob = input("Probabilidade da mensagem: ")
+
+                    source_lifeline = input("Lifeline de origem: ")
+                    target_lifeline = input("Lifeline alvo: ")
+
+                    if not seq.lifeline_exists(source_lifeline) and not seq.lifeline_exists(target_lifeline):
+                        raise MessageFormatException
+
+                    sequence_diagram.persist_messages(m_name, m_prob, source_lifeline, target_lifeline)
+                    sequence_diagram.elements_update(option - 1)
+
+                elif option1 == 2:
+                    fragment_name = input("Nome do fragmento: ")
+                    sequence_diagram.persist_fragments(fragment_name)
+                    sequence_diagram.elements_update(option - 1)
+
+                else:
+                    break
+
+            seq.create_single_sequence_diagram(sequence_diagram)
 
         else:
             seq.create_xml()

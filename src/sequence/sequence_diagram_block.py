@@ -1,10 +1,14 @@
 from message import Messages
+
 from excepts import MessageFormatException
 
+
 class SequenceDiagramBlock:
+
     def __init__(self, name, guard):
         self.name = name
         self.guard = guard
+
         self.messages = []
         self.fragments = []
         self.elements = []
