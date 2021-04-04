@@ -1,14 +1,8 @@
 <SequenceDiagrams>
 	<Lifelines>
-		<Lifeline name="l1"/>
-		<Lifeline name="l2"/>
 	</Lifelines>
 	<Fragments>
-		<Optional name="f1" representedBy="d1"/>
 	</Fragments>
-	<SequenceDiagram name="d1" guard_condition="d > 2">
-		<Message name="m1" prob="0.9" source="l1" target="l1"/>
-		<Message name="m2" prob="0.8" source="l2" target="l2"/>
-		<Fragment name="f1">
+	<SequenceDiagram name="d" guard_condition="d">
 	</SequenceDiagram>
 </SequenceDiagrams>

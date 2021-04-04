@@ -28,10 +28,6 @@ if __name__ == "__main__":
         elif option == 2:
             fragment_name = input("Nome do Fragmento: ")
 
-            # from excepts import EmptyOptionalFragment
-            # if seq.sequence_fragment_exists(fragment_name) is False:
-            #     raise EmptyOptionalFragment
-
             fragment_represented = input("Fragmento representado por: ")
 
             seq.create_and_persist_fragments(
